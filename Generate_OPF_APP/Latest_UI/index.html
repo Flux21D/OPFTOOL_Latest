@@ -87,6 +87,8 @@
 				<input type="button" id="Process" name="Process" value="Process"/>
 				&nbsp; &nbsp;
 				<input type="button" id="Cancel" name="Cancel" value="Cancel"/>
+				&nbsp; &nbsp;
+				<input type="button" id="delete" name="Remove" value="Remove"/>
 			</div>
 			<div class="col-lg-4"></div>
 		</div>
@@ -101,6 +103,7 @@
                 <h4 class="modal-title">Meta Information</h4>
             </div>
             <div class="modal-body">
+				<p><img src="Title_Images\Single_page\\cover.jpg" width="50%"/></p>
 				<form class="form-horizontal" role="form">
 					
 					<div class="form-group">
@@ -178,7 +181,6 @@
 						</div>
 					</div> <!-- Guide Required Radio Button Ends Here -->
 
-
 				</form>
 			</div>
             <div class="modal-footer">
@@ -195,57 +197,55 @@
 	$('#metaInfo').dataTable({
 	    "ajax": {
 			"url": "database.json",
-		}
+			"dataSrc": function (json){
+				for(var i=0; i<json.data.length; i++){
+					json.data[i][0] = '<img class="cover_images" src="' + json.data[i][0] + '" height="100px;"/>';
+				}
+				return json.data;
+			}
+		},
+		paginate: false,
+		"columnDefs": [
+			{ "width": "10%", "targets": 0 },
+			{ "width": "35%", "targets": 1 },
+			{ "width": "35%", "targets": 2 },
+		],
+		"bAutoWidth": false,
    });
+   
    var table = $('#metaInfo').DataTable();
-
-
-
+	$('#metaInfo tbody').on( 'click', 'tr', function () {
+        $(this).toggleClass('selected');
+    } );
+	$('#delete').click( function () {
+        table.row('.selected').remove().draw( false );
+    } );    
+	
+	
     $(document).ready(function (){
 		$('#metaInfo tbody tr').each(function (index,element){
-			var content = $(this).children('td').eq(0).text().toString().replace(/\\/g,'\/');
-			$(this).children('td').eq(0).before('<th scope="row" class="cover_images" style="text-align:center; width:5%;">' + '<img src="' + content + '"/>' + '</th>');
-			$(this).children('td').eq(0).remove();
-			$(this).children('td').each(function (ind,ele){
-				$(this).attr('sytle','cursor: pointer;');
-					$(this).attr('class','tabledit-view-mode');
-
-					$(this).html('<span class="tabledit-span">' + $(this).html() + '</span>\n' + '<input class="tabledit-input form-control input-sm" type="text" name="' + $('#metaInfo thead tr').children('th').eq(ind).html() + '" value="' + $(this).html() + '" style="display: none;" disabled="">\n' + '</td>\n');
-			});
 			$(this).children('td').eq(1).addClass('sorting_1');
-			
-			$(this).children('td').eq($(this).children('td').length-1).after('<td class="tabledit-view-mode" style="white-space: nowrap; width: 1%;"><div class="tabledit-toolbar btn-toolbar" style="text-align: left;">\n<div class="btn-group btn-group-sm" style="float: none;"><button type="button" class="tabledit-delete-button btn btn-sm btn-default" style="float: none;"><span class="glyphicon glyphicon-trash"></span></button></div>\n<button type="button" class="tabledit-confirm-button btn btn-sm btn-danger" style="display: none; float: none;">Confirm</button>\n<button type="button" class="tabledit-restore-button btn btn-sm btn-warning" style="display: none; float: none;">Restore</button>\n</div></td>');
+			$(this).children('td').eq(0).attr('class','center');
 			
 			if(index == $('#metaInfo tbody tr').length-1){
-				alert('processing...');
 				$('.sidebar').attr('style','height: ' + $('.main').height());
 			}
 
 		});
 	}); 
    
-   
-   	$('#metaInfo').Tabledit({
-		editButton: false,
-		removeButton: false,
-		columns: {
-			identifier: [0, 'id'],
-			editable: [[1, 'Folder Name'],[2, 'Title Name']]
-		}
-	});
-
 </script>
 
 <script type="text/javascript">
     $(function () {
         $(".cover_images").click(function () {
+			$("#myModal").find('img').attr('src',$(this).attr('src'));
 			$("#myModal").modal('show');
         });
     });
 </script>
 
 </div>
-
 
 </body>
 

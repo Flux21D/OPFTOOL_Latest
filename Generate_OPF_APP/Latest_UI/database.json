@@ -1,16 +1,24 @@
 {
   "data": [
-    [
-      "Title_Images\\Single_page\\cover.jpg",
-      "Single_page",
-      "Single_page",
-      "Single_page"
-    ],
-	[
-      "Title_Images\\Single_page\\cover.jpg",
-      "Doubt_Page",
-      "",
-      ""
-    ]
+		[
+		  "Title_Images\\Single_page\\cover.jpg",
+		  "Single_page",
+		  "Benchmark Education Company"
+		],
+		[
+		  "Title_Images\\Doubt_Page\\cover.jpg",
+		  "Doubt_Page",
+		  "LERNER Publishing"
+		],
+		[
+		  "Title_Images\\Single_page\\cover.jpg",
+		  "Single_page",
+		  "Mondodari Education Press"
+		],
+		[
+		  "Title_Images\\Doubt_Page\\cover.jpg",
+		  "Doubt_Page",
+		  "MacMillan Publishing"
+		]
 	]
 }
