@@ -103,7 +103,7 @@
                 <h4 class="modal-title">Meta Information</h4>
             </div>
             <div class="modal-body">
-				<p><img src="Title_Images\Single_page\\cover.jpg" width="50%"/></p>
+				<p style="text-align:center"><img src="Title_Images\Single_page\\cover.jpg" height="20%"/></p>
 				<form class="form-horizontal" role="form">
 					
 					<div class="form-group">
@@ -184,8 +184,8 @@
 				</form>
 			</div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">OK</button>
+                <button type="button" id="close" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" id="ok" class="btn btn-primary">OK</button>
             </div>
         </div>
     </div>
@@ -223,6 +223,7 @@
 	
 	
     $(document).ready(function (){
+	
 		$('#metaInfo tbody tr').each(function (index,element){
 			$(this).children('td').eq(1).addClass('sorting_1');
 			$(this).children('td').eq(0).attr('class','center');
@@ -241,7 +242,15 @@
         $(".cover_images").click(function () {
 			$("#myModal").find('img').attr('src',$(this).attr('src'));
 			$("#myModal").modal('show');
+			$(document).keypress(function(e) { 
+				if (e.which == 13) $('#ok').click();   // enter (works as expected)
+				if (e.which == 27) $('#close').click(); // esc   (does not work)
+			});
         });
+		$('#ok').click(function (){
+			$('#myModal').hide();
+			location.reload();
+		});
     });
 </script>
 
