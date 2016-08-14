@@ -1,0 +1,45 @@
+body{
+	font-family: 'Raleway', sans-serif;
+	/*background-color: rgb(232,232,232);*/
+	background-color: #4791D2;
+
+}
+.center{
+	text-align: center;
+}
+.main{
+	background-color: white;
+}
+
+.main{
+    clear: both;
+    background: #EAEBEE top right;
+    padding: 0.5em 1.3em;
+    border-bottom: 1px solid #DCDDE0;
+}
+input#submit{
+	font-family: Monaco, "Courier New", Monospace;
+    font-size: 0.9em;
+    padding: 0.2em 0.2em;
+    max-width: 1000px;
+    font-variant: normal;
+    margin: 0.3em 0 0 1em;
+	width: 50%;
+}
+input#browse{
+	font-family: Monaco, "Courier New", Monospace;
+    font-size: 0.9em;
+    border: 1px solid #bbb;
+    border-top: 1px solid #777;
+    border-bottom: 1px solid #ddd;
+    background: #fefefe top left;
+    padding: 0.2em 0.2em;
+    max-width: 1000px;
+    font-variant: normal;
+    margin: 0.3em 0 0 1em;
+	width: 50%;
+}
+
+.alert{
+	color: red;
+}

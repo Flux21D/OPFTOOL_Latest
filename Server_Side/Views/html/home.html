@@ -1,0 +1,187 @@
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OPF Tool</title>
+<link rel="stylesheet" href="css/bootstrap.min.css"/>
+<script src="script/jquery.min.js"></script>
+<script src="script/bootstrap.min.js"></script>
+<script src="script/jquery.tabledit.js"></script>
+<script src="script/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="css/datatables.min.css"/>
+<link rel="stylesheet" type="text/css" href="css/jquery-ui.css"/>
+<link rel="stylesheet" type="text/css" href="css/dataTables.jqueryui.min.css"/>
+
+<script type="text/javascript" src="script/datatables.min.js"></script>
+<script type="text/javascript" src="script/dataTables.jqueryui.min.js"></script>
+
+<script src="index.js"></script>
+<link rel="stylesheet" type="text/css" href="template.css"/>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+	<div class="navbar-header">
+	  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+		<span class="sr-only">Toggle navigation</span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+	  </button>
+	  <a class="navbar-brand" href="#"><img src="images/ePub_Logo.png" height="300%"/></a>
+	</div>
+	<div id="navbar" class="navbar-collapse collapse">
+	  <ul class="nav navbar-nav navbar-right">
+		<li><a href="#">Home</a></li>
+		<li><a href="#">About Us</a></li>
+		<li><a href="#">Services</a></li>
+		<li><a href="#">Contact Us</a></li>
+	  </ul>
+	</div>
+  </div>
+</nav>
+
+<div class="container-fluid" style="margin-top:90px;">
+<div class="row">
+	<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 main">
+		<h1 class="center">Generate OPF File - ePub 2/3 format</h1>
+		<form class="tabledit-form">
+			<table class="table table-responsive table-striped table-bordered"  cellspacing="0" width="100%" id="metaInfo">
+			  <caption></caption>
+				<thead>
+					<tr>
+					  <th class="col1">Cover</th>
+					  <th class="col2">Folder Name</th>
+					  <th class="col3">Title Name</th>
+					  <th class="col4">Author Name</th>
+					  <th class="col5">Illustrator Name</th>
+					  <th class="col6">Publisher Name</th>
+					  <th class="col7">ISBN Number</th>
+					  <th class="col8">Copyright Information</th>
+					  <th class="col9">Guide Required</th>
+					</tr>
+				</thead>
+			</table>
+
+		</form>
+		
+		<div class="row buttonGroup">
+			<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5"></div>
+			<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+				<input type="button" id="Process" name="Process" value="Process"/>
+				&nbsp; &nbsp;
+				<input type="button" id="Cancel" name="Cancel" value="Reset"/>
+				&nbsp; &nbsp;
+				<input type="button" id="delete" name="Remove" value="Remove"/>
+			</div>
+			<div class="col-lg-4"></div>
+		</div>
+	</div>
+</div>
+
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Meta Information</h4>
+            </div>
+            <div class="modal-body">
+				<p style="text-align:center"><img src="Title_Images\Single_page\\cover.jpg" height="20%"/></p>
+				<form class="form-horizontal" role="form">
+					
+					<div class="form-group">
+						<label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">Title name:</label>
+						<div class="input-group col-lg-8 col-md-8 col-sm-8 col-xs-8">
+						  <input class="form-control" id="titleName" type="text" value="">
+						  <div class="input-group-addon" id="help"><a href="#" data-toggle="tooltip" title="Enter correct Title Name">?</a></div>
+						</div>
+					</div> <!-- Title Name Text Field Ends Here -->
+
+					<!--
+					<div class="form-group">
+						<label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">Cover Image:</label>
+						<div class="input-group col-lg-8 col-md-8 col-sm-8 col-xs-8">
+							<input type="file" class="file" />
+							<div class="fakefile">
+								<input />
+								<input type="button" value="Browse"/>
+							</div>
+						</div>
+					</div> <!-- Cover Image Text Field Ends Here -->
+					
+
+					<div class="form-group">
+						<label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">Author name:</label>
+						<div class="input-group col-lg-8 col-md-8 col-sm-8 col-xs-8">
+						  <input class="form-control" id="authorName" type="text" value="">
+						  <div class="input-group-addon" id="help"><a href="#" data-toggle="tooltip" title="Enter correct Author Name">?</a></div>
+						</div>
+					</div> <!-- Author Name Text Field Ends Here -->					
+					
+					
+					<div class="form-group">
+						<label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">Illustrator name:</label>
+						<div class="input-group col-lg-8 col-md-8 col-sm-8 col-xs-8">
+						  <input class="form-control" id="illustratorName" type="text" value="">
+						  <div class="input-group-addon" id="help"><a href="#" data-toggle="tooltip" title="Enter correct Illustrator Name">?</a></div>
+						</div>
+					</div> <!-- Illustrator Name Text Field Ends Here -->					
+					
+					
+					<div class="form-group">
+						<label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">Publisher name:</label>
+						<div class="input-group col-lg-8 col-md-8 col-sm-8 col-xs-8">
+						  <input class="form-control" id="publisherName" type="text" value="">
+						  <div class="input-group-addon" id="help"><a href="#" data-toggle="tooltip" title="Enter correct Publisher Name">?</a></div>
+						</div>
+					</div> <!-- Publisher Name Text Field Ends Here -->					
+					
+					
+					<div class="form-group">
+						<label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">ISBN Number:</label>
+						<div class="input-group col-lg-8 col-md-8 col-sm-8 col-xs-8">
+						  <input class="form-control" id="isbnNumber" type="text" value="">
+						  <div class="input-group-addon" id="help"><a href="#" data-toggle="tooltip" title="Enter correct ISBN Number">?</a></div>
+						</div>
+					</div> <!-- ISBN Number Text Field Ends Here -->					
+					
+					
+					<div class="form-group">
+						<label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">CopyRight Information:</label>
+						<div class="input-group col-lg-8 col-md-8 col-sm-8 col-xs-8">
+						  <input class="form-control" id="copyrightInfo" type="text" value="">
+						  <div class="input-group-addon" id="help"><a href="#" data-toggle="tooltip" title="Enter correct Copyright Info">?</a></div>
+						</div>
+					</div> <!-- Copyright Information Text Field Ends Here -->					
+
+
+					<div class="form-group">
+						<label class="col-lg-3 col-md-3 col-sm-3  col-xs-3 control-label">Guide Required:</label>
+						<div class="input-group col-lg-8 col-md-8 col-sm-8 col-xs-8">
+						  <div id="radioset">
+							<input type="radio" id="radio1" name="radio"><label for="radio1">Yes</label>
+							<input type="radio" id="radio2" name="radio" checked="checked"><label for="radio2">No</label>
+						  </div>
+						</div>
+					</div> <!-- Guide Required Radio Button Ends Here -->
+
+				</form>
+			</div>
+            <div class="modal-footer">
+                <button type="button" id="close" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" id="ok" class="btn btn-primary">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+</body>
+
+</html>

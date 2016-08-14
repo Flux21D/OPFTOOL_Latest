@@ -1,0 +1,88 @@
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<title>OPF Tool</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css"/>
+		<script src="script/jquery.min.js"></script>
+		<script src="script/bootstrap.min.js"></script>
+		<script src="script/jquery.tabledit.js"></script>
+		<script src="script/jquery-ui.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/datatables.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/jquery-ui.css"/>
+		<link rel="stylesheet" type="text/css" href="css/dataTables.jqueryui.min.css"/>
+
+		<script type="text/javascript" src="script/datatables.min.js"></script>
+		<script type="text/javascript" src="script/jquery.form.min.js"></script>
+		<script type="text/javascript" src="script/dataTables.jqueryui.min.js"></script>
+
+		<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="index.css"/>
+
+	</head>
+
+	<body>
+
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+		  <div class="container-fluid">
+			<div class="navbar-header">
+			  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			  </button>
+			  <a class="navbar-brand" href="#"><img src="images/ePub_Logo.png" height="300%"/></a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+			  <ul class="nav navbar-nav navbar-right">
+				<li><a href="#">Home</a></li>
+				<li><a href="#">About Us</a></li>
+				<li><a href="#">Services</a></li>
+				<li><a href="#">Contact Us</a></li>
+			  </ul>
+			</div>
+		  </div>
+		</nav>
+
+		<div class="container-fluid" style="margin-top:8%;">
+			<div class="row">
+				<div class="col-sm-4 col-md-4 col-lg-4 col-xs-4"></div>
+				<div class="col-sm-4 col-md-4 col-lg-4 col-xs-4">
+					<h1>Generate OPF File</h1>
+					<h2>ePub 2/3 format</h2>
+					<br/><br/>
+					<form id="uploadForm" enctype="multipart/form-data" action="/process" method="post">
+						<input type="file" id="browse" name="userPhoto" />
+						<br/>
+						<input type="submit" id="submit" value="Upload Image" name="submit">
+						<span id="status"></span>
+					</form>
+				</div>
+				<div class="col-sm-4 col-md-4 col-lg-4 col-xs-4"></div>
+			</div>
+		</div>
+
+	</body>
+
+	<script>
+	  $(document).ready(function() {
+			$('#uploadForm').submit(function() {
+				$("#status").empty().text("File is uploading...");
+				$(this).ajaxSubmit({
+
+					error: function(xhr) {
+						status('Error: ' + xhr.status);
+					},
+					success: function(response) {
+						//$("#status").empty().text(response);
+					}
+				});
+				//Very important line, it disable the page refresh.
+				//return false;
+			});    
+		});
+	</script>
+
+</html>
